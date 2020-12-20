@@ -1,6 +1,6 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { CameraDefinition } from "src/config/cameraDefinition";
-import { DiscordConfig } from "src/config/discordConfig";
+import { CameraDefinition } from "../config/cameraDefinition";
+import { DiscordConfig } from "../config/discordConfig";
 import { Notifier } from "./notifier.interface";
 import fetch from "node-fetch";
 import * as fs from "fs";

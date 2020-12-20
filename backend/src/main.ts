@@ -4,7 +4,7 @@ import { FileWatchService } from './file-watch.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  // await app.listen(3000);
+  await app.listen(3000);
   const fileWatchService = app.get(FileWatchService);
   fileWatchService.start();
 }

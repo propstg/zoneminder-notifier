@@ -13,7 +13,5 @@ export class FileWatchService {
         watch(`${this.rootScanDirectory}**\\alarm.jpg`, {
             ignoreInitial: true,
         }).on("add", async (path) => await this.notifierService.handleAlarm(path));
-
-        this.notifierService.handleAlarm("D:\\Zoneminder2\\8\\2020-12-19\\855582\\alarm.jpg");
     }
 }
