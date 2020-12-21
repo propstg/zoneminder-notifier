@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { CameraDefinitionService } from './cameraDefinitions/camera-definition.service';
 import { CameraDefinition } from './config/cameraDefinition';
@@ -21,6 +21,7 @@ export class AppController {
   }
 
   @Post("/camera/:id")
+  @HttpCode(200)
   setNotificationStatus(@Param("id") cameraId: string, @Body() cameraDefinition: CameraDefinition) {
     return this.cameraDefinitionService.setNotifications(cameraId, cameraDefinition.notify);
   }
