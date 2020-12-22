@@ -1,6 +1,6 @@
-import { Body, Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
-import { CameraDefinitionService } from './cameraDefinitions/camera-definition.service';
-import { CameraDefinition } from './config/cameraDefinition';
+import { Body, Controller, Get, HttpCode, Param, Post } from "@nestjs/common";
+import { CameraDefinitionService } from "./cameraDefinitions/camera-definition.service";
+import { CameraDefinition } from "./config/cameraDefinition";
 
 @Controller()
 export class AppController {

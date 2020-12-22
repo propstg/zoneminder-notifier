@@ -1,6 +1,6 @@
-import { Inject, Injectable } from '@nestjs/common';
-import {watch} from "chokidar";
-import { NotifierService } from './notifiers/notifier.service';
+import { Inject, Injectable } from "@nestjs/common";
+import { watch } from "chokidar";
+import { NotifierService } from "./notifiers/notifier.service";
 
 @Injectable()
 export class FileWatchService {

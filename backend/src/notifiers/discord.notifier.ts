@@ -19,11 +19,11 @@ export class DiscordNotifier implements Notifier {
 
         const formData = new FormData();
         // @ts-ignore 
-        formData.append('file', fs.createReadStream(alarmPath));
-        formData.append('payload_json', JSON.stringify({content: `Motion detected on camera ${cameraDefinition.camera}`}));
+        formData.append("file", fs.createReadStream(alarmPath));
+        formData.append("payload_json", JSON.stringify({content: `Motion detected on camera ${cameraDefinition.camera}`}));
 
         const options = {
-            method: 'POST',
+            method: "POST",
             body: formData,
         };
 
@@ -33,7 +33,7 @@ export class DiscordNotifier implements Notifier {
             console.log(response);
         } catch(e) {
             console.log(e);
-            throw(e);
+            throw e;
         }
     }
 }
