@@ -3,6 +3,7 @@ import { CameraDefinitionService } from "../cameraDefinitions/camera-definition.
 import { CameraDefinition } from "../config/cameraDefinition";
 import { DiscordNotifier } from "./discord.notifier";
 import { Notifier } from "./notifier.interface";
+import { sep as pathSeparator } from "path";
 
 @Injectable()
 export class NotifierService {
@@ -30,7 +31,7 @@ export class NotifierService {
 
     private getCameraDefinition(alarmPath: string): CameraDefinition {
         let cameraId = alarmPath.replace(this.rootScanDirectory, "");
-        cameraId = cameraId.substr(0, cameraId.indexOf("\\"));
+        cameraId = cameraId.substr(0, cameraId.indexOf(pathSeparator));
 
         return this.cameraDefinitionService.getDefinition(cameraId);
     }

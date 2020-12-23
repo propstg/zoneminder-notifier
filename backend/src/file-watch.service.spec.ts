@@ -1,6 +1,7 @@
 import { FileWatchService } from "./file-watch.service";
 import { NotifierService } from "./notifiers/notifier.service";
 import * as chokidar from "chokidar";
+import { sep as pathSeparator } from "path";
 
 describe("FileWatchService", () => {
     let chokidarWatchResponse;
@@ -17,14 +18,14 @@ describe("FileWatchService", () => {
         notifierService = {} as NotifierService;
         notifierService.handleAlarm = jest.fn();
 
-        fileWatchService = new FileWatchService("rootScanDirectory\\", notifierService);
+        fileWatchService = new FileWatchService("rootScanDirectory/", notifierService);
     });
 
     it("should call watch with rootScanDirectory from config", () => {
         fileWatchService.start();
 
         expect(chokidarWatchMock).toHaveBeenCalledTimes(1);
-        expect(chokidarWatchMock).toHaveBeenCalledWith("rootScanDirectory\\**\\alarm.jpg", {ignoreInitial: true});
+        expect(chokidarWatchMock).toHaveBeenCalledWith(`rootScanDirectory/**${pathSeparator}alarm.jpg`, {ignoreInitial: true});
     });
 
     it("should register add event listener with chokidar", () => {

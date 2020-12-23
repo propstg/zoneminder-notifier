@@ -1,6 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { watch } from "chokidar";
 import { NotifierService } from "./notifiers/notifier.service";
+import { sep as pathSeparator } from "path";
 
 @Injectable()
 export class FileWatchService {
@@ -10,7 +11,7 @@ export class FileWatchService {
     ){}
 
     start() {
-        watch(`${this.rootScanDirectory}**\\alarm.jpg`, {
+        watch(`${this.rootScanDirectory}**${pathSeparator}alarm.jpg`, {
             ignoreInitial: true,
         }).on("add", async (path) => await this.notifierService.handleAlarm(path));
     }
