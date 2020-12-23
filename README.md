@@ -44,6 +44,23 @@ Set `enabled` to false to not use discord.
 2. Add the new class to `backend/src/notifiers/notifiers.module.ts`
 3. Add the new class to `backend/src/notifiers/notifier.service.ts`
 
+## running
+1. Create a config.yaml
+2. run `npm start`.
+
+### docker
+1. Create a config.yaml (use `rootScanDirectory: /zoneminder/`)
+2. `docker build . -t zm-notifier`
+3. Example run command, adding zoneminder's volume path on the host as a volume for the rootScanDirectory (maybe the worst way to do it?) 
+    ```
+    docker run \
+      -d \
+      -p 8126:3000 \
+      --name=zm-notifier \
+      -v /var/snap/docker/common/var-lib-docker/volumes/f1ef1766e6ffd5e6ac0377c58b7586566e7d6125e5ca0f9cd2d368943c367640/_data/events/:/zoneminder \
+      zm-notifier
+    ```
+
 ## home-assistant integration
 To add buttons to toggle notification status in home assistant...
 
